@@ -2,17 +2,9 @@ echo "Running tests..."
 echo
 
 echo "*****"
-echo -e "Inheritance...\\n"
-output_animal=$(./animal)
-echo "$output_animal"
-
-expected_output_eat="I can eat"
-expected_output_sleep="I can sleep"
-expected_output_bark="I can bark"
-expected_output_meow="I can bark"
-expected_output_mammal="I am a mammal"
-expected_output_color="My color is"
-
+echo -e "Multi-level Inheritance : Family...\\n"
+output_family=$(./family)
+echo "$output_family"
 
 if [ $? -eq 0 ] ; then
   echo -e "\\nPass: Program exited zero"
@@ -21,16 +13,38 @@ else
   exit 1
 fi
 
+echo "*****"
+echo -e "Multiple Inheritance : Close Family...\\n"
+output_close_family=$(./close_family)
+echo "$output_close_family"
 
-if [[ ${output_animal//[[:space:]]/} == *${expected_output_eat//[[:space:]]/}* &&
-      ${output_animal//[[:space:]]/} == *${expected_output_sleep//[[:space:]]/}*  &&
-      ${output_animal//[[:space:]]/} == *${expected_output_bark//[[:space:]]/}*  &&
-      ${output_animal//[[:space:]]/} == *${expected_output_meow//[[:space:]]/}* &&
-      ${output_animal//[[:space:]]/} == *${expected_output_mammal//[[:space:]]/}*  &&
-      ${output_animal//[[:space:]]/} == *${expected_output_color//[[:space:]]/}*  ]] ; then
+if [ $? -eq 0 ] ; then
+  echo -e "\\nPass: Program exited zero"
+else
+  echo "Fail: Program did not exit zero"
+  exit 1
+fi
+
+echo "*****"
+echo -e "Inheritance and Access Specifiers : Employee...\\n"
+output_employee=$(./employee)
+echo "$output_employee"
+
+if [ $? -eq 0 ] ; then
+  echo -e "\\nPass: Program exited zero"
+else
+  echo "Fail: Program did not exit zero"
+  exit 1
+fi
+
+expected_employee_salary="Salary"
+expected_employee_bonus="Bonus"
+
+if [[ ${output_employee//[[:space:]]/} == *${expected_employee_salary//[[:space:]]/}* &&
+      ${output_employee//[[:space:]]/} == *${expected_employee_bonus//[[:space:]]/}*  ]] ; then
   echo -e "Pass: Output is correct"
 else
-  echo "Expected '$expected_output_animal' but got: $output_animal"
+  echo "Expected '$expected_employee_salary' and '$expected_employee_bonus' but got: $output_employee"
   exit 1
 fi
 
