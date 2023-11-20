@@ -14,7 +14,7 @@ Salary: $80000
 Bonus: $5000
 
 Note:
-- An object of class Programmer must call setSalary, getSalry from main().
+- An object of class Programmer must call setSalary, getSalary from main().
    Assign bonus for the object from main() as well
 - Display salary and bonus as shown above
 
